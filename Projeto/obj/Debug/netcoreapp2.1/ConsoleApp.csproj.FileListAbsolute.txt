@@ -9,3 +9,14 @@ C:\Users\rodri\source\repos\ConsoleApp\ConsoleApp\obj\Debug\netcoreapp2.1\Consol
 C:\Users\rodri\source\repos\ConsoleApp\ConsoleApp\obj\Debug\netcoreapp2.1\ConsoleApp.AssemblyInfo.cs
 C:\Users\rodri\source\repos\ConsoleApp\ConsoleApp\obj\Debug\netcoreapp2.1\ConsoleApp.dll
 C:\Users\rodri\source\repos\ConsoleApp\ConsoleApp\obj\Debug\netcoreapp2.1\ConsoleApp.pdb
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\obj\Debug\netcoreapp2.1\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\obj\Debug\netcoreapp2.1\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\obj\Debug\netcoreapp2.1\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\obj\Debug\netcoreapp2.1\ConsoleApp.AssemblyInfo.cs
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\obj\Debug\netcoreapp2.1\ConsoleApp.dll
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\obj\Debug\netcoreapp2.1\ConsoleApp.pdb
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\bin\Debug\netcoreapp2.1\ConsoleApp.deps.json
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\bin\Debug\netcoreapp2.1\ConsoleApp.runtimeconfig.json
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\bin\Debug\netcoreapp2.1\ConsoleApp.runtimeconfig.dev.json
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\bin\Debug\netcoreapp2.1\ConsoleApp.dll
+C:\Users\rodri\Cursos\CSharp\CSharp_Modulo1\Projeto\bin\Debug\netcoreapp2.1\ConsoleApp.pdb

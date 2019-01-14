@@ -5,6 +5,11 @@ namespace ConsoleApp
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+
+        }
+
         static void Main_Aula3(string[] args)
         {
             var c = new Calculadora();

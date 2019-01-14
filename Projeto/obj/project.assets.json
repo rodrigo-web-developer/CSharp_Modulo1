@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rodri\\source\\repos\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+      "projectUniqueName": "C:\\Users\\rodri\\Cursos\\CSharp\\CSharp_Modulo1\\Projeto\\ConsoleApp.csproj",
       "projectName": "ConsoleApp",
-      "projectPath": "C:\\Users\\rodri\\source\\repos\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+      "projectPath": "C:\\Users\\rodri\\Cursos\\CSharp\\CSharp_Modulo1\\Projeto\\ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rodri\\source\\repos\\ConsoleApp\\ConsoleApp\\obj\\",
+      "outputPath": "C:\\Users\\rodri\\Cursos\\CSharp\\CSharp_Modulo1\\Projeto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
