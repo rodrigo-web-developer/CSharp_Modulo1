@@ -5,26 +5,38 @@ namespace ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Pessoa p;
 
+            p = new Pessoa();
+            Pessoa professor = new Professor();
+            Pessoa professor2 = new Professor();
+
+            p.Nome = "Pessoa";
+            professor.Nome = "Professor";
+            professor2.Nome = "Professor 2";
+
+            p.ApresentarSe();
+            professor.ApresentarSe();
+            Pessoa.Estatico = "teste";
+            
+            Console.ReadKey();
         }
 
         static void Main_Aula3(string[] args)
         {
-            var c = new Calculadora();
+            var x = Calculadora.Somar(10, 5);
 
-            var x = c.Somar(10, 5);
+            var x1 = Calculadora.Somar(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-            var x1 = c.Somar(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            Calculadora.Alertar(x1);
 
-            c.Alertar(x1);
+            var dif1 = Calculadora.Subtrair(10, 5);
 
-            var dif1 = c.Subtrair(10, 5);
+            var dif2 = Calculadora.Subtrair(10);
 
-            var dif2 = c.Subtrair(10);
-
-            c.Alertar(x);
+            Calculadora.Alertar(x);
 
             var aluno = new Aluno
             {
