@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ConsoleApp
@@ -10,7 +11,10 @@ namespace ConsoleApp
 
         public static string Estatico { get; set; }
 
+        [Required]
+        [StringLength(100, MinimumLength = 6)]
         public string Nome { get; set; }
+
         public DateTime DataNascimento { get; set; }
         public int Idade
         { // propriedade com apenas get
