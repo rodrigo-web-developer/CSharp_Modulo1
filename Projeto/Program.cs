@@ -7,7 +7,77 @@ namespace ConsoleApp
 {
     class Program
     {
+        public static List<Aluno> Alunos { get; } = new List<Aluno>();
+
         static void Main(string[] args)
+        {
+            while (true)
+            {
+                int opcao = 0;
+                Console.WriteLine("1 - Criar Aluno");
+                Console.WriteLine("2 - Listar Alunos");
+                try
+                {
+                    opcao = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Comando inválido!");
+                    Console.ReadKey();
+                    Console.Clear();
+                    continue;
+                }
+                switch (opcao)
+                {
+                    case 1:
+                        var newAluno = new Aluno();
+                        Console.WriteLine("Digite o nome:");
+                        newAluno.Nome = Console.ReadLine();
+                        Console.WriteLine("Digite o email:");
+                        newAluno.Email = Console.ReadLine();
+                        Console.WriteLine("Digite o RA:");
+                        newAluno.Ra = Console.ReadLine();
+                        Console.WriteLine("Digite a data de nascimento:");
+                        newAluno.DataNascimento = DateTime.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite o tipo de graduacao (0 - Bacharelado," +
+                                                        "1 - Licenciatura,"
+                                                        + "2 - Tecnologo):");
+                        newAluno.Graduacao = (TipoGraduacao)int.Parse(Console.ReadLine());
+                        var contexto = new ValidationContext(newAluno);
+                        var erros = new List<ValidationResult>();
+                        Validator.TryValidateObject(newAluno, contexto, erros, true);
+                        if (erros.Any())
+                        {
+                            Console.WriteLine("Inválido!");
+
+                            foreach (var erro in erros)
+                            {
+                                Console.WriteLine(erro.ErrorMessage);
+                            }
+                        }
+                        else
+                        {
+                            Alunos.Add(newAluno);
+                            Console.WriteLine("Aluno cadastrado com sucesso!");
+                        }
+                        break;
+                    case 2:
+                        foreach (var aluno in Alunos)
+                        {
+                            Console.WriteLine("Nome: {0}\nE-mail:{1}\nData de Nascimento: {2}\n\n",
+                                aluno.Nome, aluno.Email, aluno.DataNascimento);
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Comando inválido!");
+                        break;
+                }
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        static void Main_Aula6(string[] args)
         {
             /*try
             {

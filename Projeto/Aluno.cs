@@ -7,6 +7,9 @@ namespace ConsoleApp
     {
         [Required]
         public string Ra { get; set; } // propriedade
+        [EmailAddress]
+        [Required]
+        public string Email { get; set; }
         public TipoGraduacao Graduacao { get; set; }
 
     }
