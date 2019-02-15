@@ -7,7 +7,43 @@ namespace ConsoleApp
 {
     class Program
     {
-        public static List<Aluno> Alunos { get; } = new List<Aluno>();
+        public static List<Aluno> Alunos { get; } = new List<Aluno> {
+            new Aluno{ Ra = "123456", Nome="Aluno 1", Email= "email@email.com", DataNascimento = new DateTime(2000,1,1)},
+            new Aluno{ Ra = "123450", Nome="Aluno 2", Email= "email@email.com", DataNascimento = new DateTime(2000,1,1)},
+            new Aluno{ Ra = "123459", Nome="Aluno 3", Email= "email@email.com", DataNascimento = new DateTime(2000,1,1)},
+        };
+
+        public static void PreencherAluno(Aluno aluno)
+        {
+            Console.WriteLine("Digite o nome:");
+            aluno.Nome = Console.ReadLine();
+            Console.WriteLine("Digite o email:");
+            aluno.Email = Console.ReadLine();
+            Console.WriteLine("Digite a data de nascimento:");
+            aluno.DataNascimento = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o tipo de graduacao (0 - Bacharelado," +
+                                            "1 - Licenciatura,"
+                                            + "2 - Tecnologo):");
+            aluno.Graduacao = (TipoGraduacao)int.Parse(Console.ReadLine());
+        }
+
+        public static bool ValidarAluno(Aluno aluno)
+        {
+            var contexto = new ValidationContext(aluno);
+            var erros = new List<ValidationResult>();
+            Validator.TryValidateObject(aluno, contexto, erros, true);
+            if (erros.Any())
+            {
+                Console.WriteLine("Inválido!");
+
+                foreach (var erro in erros)
+                {
+                    Console.WriteLine(erro.ErrorMessage);
+                }
+                return false;
+            }
+            return true;
+        }
 
         static void Main(string[] args)
         {
@@ -16,6 +52,8 @@ namespace ConsoleApp
                 int opcao = 0;
                 Console.WriteLine("1 - Criar Aluno");
                 Console.WriteLine("2 - Listar Alunos");
+                Console.WriteLine("3 - Alterar Aluno");
+                Console.WriteLine("4 - Excluir Aluno");
                 try
                 {
                     opcao = int.Parse(Console.ReadLine());
@@ -31,41 +69,54 @@ namespace ConsoleApp
                 {
                     case 1:
                         var newAluno = new Aluno();
-                        Console.WriteLine("Digite o nome:");
-                        newAluno.Nome = Console.ReadLine();
-                        Console.WriteLine("Digite o email:");
-                        newAluno.Email = Console.ReadLine();
                         Console.WriteLine("Digite o RA:");
                         newAluno.Ra = Console.ReadLine();
-                        Console.WriteLine("Digite a data de nascimento:");
-                        newAluno.DataNascimento = DateTime.Parse(Console.ReadLine());
-                        Console.WriteLine("Digite o tipo de graduacao (0 - Bacharelado," +
-                                                        "1 - Licenciatura,"
-                                                        + "2 - Tecnologo):");
-                        newAluno.Graduacao = (TipoGraduacao)int.Parse(Console.ReadLine());
-                        var contexto = new ValidationContext(newAluno);
-                        var erros = new List<ValidationResult>();
-                        Validator.TryValidateObject(newAluno, contexto, erros, true);
-                        if (erros.Any())
-                        {
-                            Console.WriteLine("Inválido!");
-
-                            foreach (var erro in erros)
-                            {
-                                Console.WriteLine(erro.ErrorMessage);
-                            }
-                        }
-                        else
+                        PreencherAluno(newAluno);
+                        if (ValidarAluno(newAluno))
                         {
                             Alunos.Add(newAluno);
-                            Console.WriteLine("Aluno cadastrado com sucesso!");
+                            Console.WriteLine("Aluno cadastrado com sucesso");
                         }
                         break;
                     case 2:
                         foreach (var aluno in Alunos)
                         {
-                            Console.WriteLine("Nome: {0}\nE-mail:{1}\nData de Nascimento: {2}\n\n",
-                                aluno.Nome, aluno.Email, aluno.DataNascimento);
+                            Console.WriteLine("Nome: {0}\nE-mail:{1}\nData de Nascimento: {2}\nTipo Graduacao: {3}\n\n",
+                                aluno.Nome, aluno.Email, aluno.DataNascimento, aluno.Graduacao.ToString());
+                        }
+                        break;
+                    case 3:
+                        Console.WriteLine("Digite o RA do aluno que se deseja alterar:");
+                        var ra = Console.ReadLine();
+                        var alterar = Alunos.FirstOrDefault(a => a.Ra == ra);
+                        var edicao = new Aluno { Ra = ra };
+                        if (alterar == null)
+                        {
+                            Console.WriteLine("Aluno não foi encontrado!");
+                        }
+                        else
+                        {
+                            PreencherAluno(edicao);
+                            if (ValidarAluno(edicao))
+                            {
+                                var indice = Alunos.IndexOf(alterar);
+                                Alunos[indice] = edicao;
+                                Console.WriteLine("Aluno alterado com sucesso");
+                            }
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine("Digite o RA do aluno que se deseja excluir:");
+                        var raExclusao = Console.ReadLine();
+                        var excluir = Alunos.FirstOrDefault(a => a.Ra == raExclusao);
+                        if (excluir == null)
+                        {
+                            Console.WriteLine("Aluno não foi encontrado!");
+                        }
+                        else
+                        {
+                            Alunos.Remove(excluir);
+                            Console.WriteLine("Aluno excluido com sucesso");
                         }
                         break;
                     default:
@@ -79,22 +130,21 @@ namespace ConsoleApp
 
         static void Main_Aula6(string[] args)
         {
-            /*try
-            {
-                List<int> lista = null;
-                List<int> lista2 = new List<int>();
+            //try
+            //{
+            //    List<int> lista = null;
+            //    List<int> lista2 = new List<int>();
 
-                var a = lista.First();
-                var a2 = lista2.First();
-            }
-            catch (ArgumentNullException ex)
-            {
-                Console.WriteLine("A lista não pode ser null");
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine("A lista não pode ser vazia");
-            }*/
+            //    var a = lista.First();
+            //    var a2 = lista2.First();
+            //}
+            //catch (Exception ex)
+            //{
+            //    if(ex is InvalidOperationException || ex is ArgumentNullException)
+            //    {
+            //        Console.WriteLine("A lista não pode ser null");
+            //    }
+            //}
 
             var aluno = new Aluno() { Nome = "a" };
 
